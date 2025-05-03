@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>📕 New Book Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-card {
+            background-color: #fff;
+            padding: 50px 40px;
+            border-radius: 14px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+            width: 700px;
+        }
+
+        .form-card h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 26px;
+            color: #2c3e50;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 30px; /* more gap between two input boxes */
+            margin-bottom: 30px; /* more vertical space */
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-size: 15px;
+        }
+
+        input[type="text"], select {
+            padding: 12px;
+            font-size: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        input:focus, select:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 14px;
+            font-size: 17px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .message {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="form-card">
+        <h1>📖 Add Book to Library</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="message {{ 'success' if category == 'success' else 'error' }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="/add-book">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label>ISBN</label>
+                    <input type="text" name="isbn" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Genre</label>
+                    <input type="text" name="genre" required>
+                </div>
+                <div class="form-group">
+                    <label>Availability</label>
+                    <select name="availability" required>
+                        <option value="Available">Available</option>
+                        <option value="Unavailable">Unavailable</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Author Name</label>
+                    <input type="text" name="author" required>
+                </div>
+                <div class="form-group">
+                    <label>Publisher Name</label>
+                    <input type="text" name="publisher" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Publisher Contact</label>
+                    <input type="text" name="contact">
+                </div>
+                <div class="form-group">
+                    <label>Publisher Address</label>
+                    <input type="text" name="address">
+                </div>
+            </div>
+
+            <button type="submit">Add Book</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+

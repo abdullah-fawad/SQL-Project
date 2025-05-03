@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Borrowed Books</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 50px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f0f8ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📖 Borrowed Books</h1>
+
+        <table>
+            <tr>
+                <th>Transaction ID</th>
+                <th>Book Title</th>
+                <th>Member Name</th>
+                <th>Borrow Date</th>
+                <th>Due Date</th>
+                <th>Return Date</th>
+                <th>Status</th>
+                <th>Penalty</th>
+            </tr>
+            {% for book in borrowed_books %}
+            <tr>
+                <td>{{ book.TransactionID }}</td>
+                <td>{{ book.Title }}</td>
+                <td>{{ book.MemberName }}</td>
+                <td>{{ book.BorrowDate }}</td>
+                <td>{{ book.DueDate }}</td>
+                <td>{{ book.ReturnDate if book.ReturnDate else 'Not Returned' }}</td>
+                <td>{{ book.Status }}</td>
+                <td>{{ book.Penalty if book.Penalty else '0.00' }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        .dashboard-section {
+            margin-bottom: 30px;
+        }
+
+        .dashboard-section h2 {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px 8px 0 0;
+            margin: 0;
+        }
+
+        .dashboard-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            border: 1px solid #3498db;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .dashboard-list li {
+            border-top: 1px solid #eee;
+        }
+
+        .dashboard-list li a {
+            display: block;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: #2c3e50;
+            transition: background 0.2s;
+        }
+
+        .dashboard-list li a:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Library Management System</h1>
+
+        <div class="dashboard-section">
+            <h2>📖 Books</h2>
+            <ul class="dashboard-list">
+                <li><a href="/books">View All Books</a></li>
+                <li><a href="/add-book">Add New Book</a></li>
+                <li><a href="/delete-book">Delete a Book</a></li>
+            </ul>
+        </div>
+
+        <div class="dashboard-section">
+            <h2>👤 Members</h2>
+            <ul class="dashboard-list">
+                <li><a href="/members">View Members</a></li>
+                <li><a href="/add-member">Add New Member</a></li>
+                <li><a href="/update-member">Update Member Details</a></li> 
+                <li><a href="/delete-member">Delete a Member</a></li>
+            </ul>
+        </div>
+
+        <div class="dashboard-section">
+            <h2>🔄 Borrowing</h2>
+            <ul class="dashboard-list">
+                <li><a href="/borrow-book">Borrow a Book</a></li>
+                <li><a href="/return-book">Return a Book</a></li>
+                <li><a href="/borrowed">View Borrowed Books</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
